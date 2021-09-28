@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>soundofnature</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap" rel="stylesheet">
+
+    <style>
+    	html{font-family: 'Josefin Slab', serif;}
+    	#bigtitle{
+    		text-align: center;
+    		padding: 100px;
+
+    	}
+    	#content{
+    		width: 1000px;
+    		padding-top: 50px;
+    		margin: auto;
+    		display: flex;
+    		flex-direction: row;
+    		flex-wrap: wrap;
+    		justify-content: space-between;
+    		place-item:  center;
+    		text-align: center;
+    	}
+    	#fire{
+    		display: flex;
+    		flex-direction: column;
+    		align-items: center;
+    	}
+    	#fireBut{
+    		margin: auto;
+    		width: 200px;
+    		margin: 40px;
+    	}
+    	#rain{
+    		display: flex;
+    		flex-direction: column;
+    		align-items: center;
+    	}
+    	#rainBut{
+    		margin: auto;
+    		width: 200px;
+    		margin: 40px;
+    	}
+    	#nightforest{
+    		display: flex;
+    		flex-direction: column;
+    		align-items: center;
+    	}
+    	#nightforestBut{
+    		margin: auto;
+    		width: 200px;
+    		margin: 40px;
+    	}
+
+    	.slidecontainer{
+    		width: 180px;
+    	}
+    	.slider{
+    		-webkit-appearance: none;
+    		appearance: none;
+    		width: 90%;
+    		height: 10%;
+    		background: green;
+    		outline: none;
+    		opacity: 0.9;
+    		-webkit-transition: .1s;
+    		transition: opacity .1s;
+    	}
+    	.slider:hover{
+    		opacity: 1;
+    	}
+    	.slider::-webkit-slider-thumb{
+    		-webkit-appearance:  none;
+    		appearance:  none;
+    		width: 30px;
+    		height: 30px;
+    		border: 0;
+    		background: url("leaf.png");
+    		background-repeat: no-repeat;
+    		background-size: cover;
+    		cursor: pointer;
+    	}
+    	.slider::-moz-range-thumb{
+    		width: 35px;
+    		height: 35px;
+    		border: 0;
+    		background: url("leaf.png");
+    		background-repeat: no-repeat;
+    		background-size: cover;
+    		cursor: pointer;
+    	}
+    	h1{
+    		color: limegreen;
+    	}
+
+    	a{
+    		font-size: 2em; color: limegreen;
+    	}
+    	
+    </style>
+</head>
+<body style="background-color: beige;"> 
+
+	<header>
+		<div id="bigtitle" style="font-size: 30px; margin-top: 20px; padding-top: 150px;padding-bottom: 40px;">
+			<h1>
+			Sound of Nature	
+			</h1>
+		
+		</div>
+	
+
+	</header>
+
+	<section style="margin-bottom: 320px;">
+		<div id="content">
+			<div id="fire">
+				<a>camp fire</a>
+				<img id="fireBut" src="fireimg.jpg">
+				<audio id="fireSnd" src="fire.mp3"></audio>
+				<div class="slidecontainer">
+					<input id="fireVol" class="slider" type="range" max="100" min="0">
+				</div>
+			</div>
+
+
+			<div id="rain">
+				<a>raining</a>
+				<img id="rainBut" src="rainimg.jpg">
+				<audio id="rainSnd" src="rain.mp3"></audio>
+				<div class="slidecontainer">
+					<input id="rainVol" class="slider" type="range" max="100" min="0">
+				</div>
+			</div>
+
+			<div id="nightforest">
+				<a>night forest</a>
+				<img id="nightforestBut" src="nightbugimg.jpg">
+				<audio id="nightforestSnd" src="nightbug.mp3"></audio>
+				<div class="slidecontainer">
+					<input id="nightforestVol" class="slider" type="range" max="100" min="0">
+				</div>
+			</div>
+		
+
+		</div>
+
+		<script type="text/javascript">
+			var state = "off";
+
+			fireVol.value=100;
+			rainVol.value=100;
+			nightforestVol.value=100;
+
+			fireVol.oninput = function(){
+				console.log(fireVol.value);
+				fireSnd.volume=fireVol.value / 100;
+			}
+
+			
+			rainVol.oninput = function(){
+				rainSnd.volume=rainVol.value / 100;
+			}
+
+			nightforestVol.oninput = function(){
+				nightforestSnd.volume=nightforestVol.value / 100;
+			}
+
+
+
+
+			fireBut.onclick= function(){
+				if(state=="off"){
+					fireBut.src="fireimgafter.png";
+					fireSnd.play();
+					state="on";
+
+				}else if (state=="on"){
+					fireBut.src="fireimg.jpg";
+					fireSnd.pause();
+					state="off";
+				}
+
+			}
+
+			
+
+
+			rainBut.onclick= function(){
+				if(state=="off"){
+					rainBut.src="rainimgafter.png";
+					rainSnd.play();
+					state="on";
+
+				}else if(state=="on"){
+					rainBut.src="rainimg.jpg";
+					rainSnd.pause();
+					state="off";
+				}
+
+			}
+
+			
+
+
+			nightforestBut.onclick= function(){
+				if(state=="off"){
+					nightforestBut.src="nightbugimgafter.png";
+					nightforestSnd.play();
+					state="on";
+
+				}else if(state=="on"){
+					nightforestBut.src="nightbugimg.jpg";
+					nightforestSnd.pause();
+					state="off";
+				}
+
+			}
+
+
+		</script>
+
+	</section>
+	
+	
+</body>
+</html>
